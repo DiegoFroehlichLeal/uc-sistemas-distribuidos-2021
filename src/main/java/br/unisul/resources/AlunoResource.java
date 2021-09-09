@@ -1,4 +1,4 @@
-package br.unisul.resources;
+/*package br.unisul.resources;
 
 import java.util.List;
 
@@ -28,4 +28,4 @@ public class AlunoResource {
 	
 	
 
-}
+}*/
