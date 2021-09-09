@@ -22,8 +22,7 @@ public class Exemplo {
 	}
 	@GetMapping("/dinamica/{nome}")
 	public String boasvindas2(@PathVariable(name="nome")String nome) {
-		String ret=nome+ " Seja bem vindo";
-		return ret;
+		return nome+ " Seja bem vindo";
 		
 	}
 
