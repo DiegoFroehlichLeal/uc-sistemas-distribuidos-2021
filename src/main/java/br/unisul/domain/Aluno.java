@@ -2,13 +2,49 @@ package br.unisul.domain;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+
+
+@Entity
 public class Aluno {
 	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;
+
 	private String Nome;
+
+	@Column
 	private Double N1;
+	@Column
 	private Double N2;
+	@Column
 	private Double N3;
+	
+	public Aluno(Integer Id, String Nome, Double N1, Double N2, Double N3) {
+		this.Id = Id;
+		this.Nome = Nome;
+		this.N1 = N1;
+		this.N2 = N2;
+		this.N3 = N3;
+	  }
+	
+	  public Aluno() {
+	
+	  }
+	
+	
+	
+	
+	
+	
+	
 	public Integer getId() {
 		return Id;
 	}

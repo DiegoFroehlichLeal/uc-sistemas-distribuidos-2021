@@ -1,4 +1,4 @@
-package br.unisul.resources;
+/*package br.unisul.resources;
 
 import br.unisul.domain.Aluno;
 import br.unisul.services.AlunoService;
@@ -43,5 +43,5 @@ public class calculadora {
         return n1 * n2;
     }
 
-}
+}*/
 

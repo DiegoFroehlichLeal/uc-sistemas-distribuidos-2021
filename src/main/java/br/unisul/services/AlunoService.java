@@ -1,43 +1,46 @@
 package br.unisul.services;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.unisul.domain.Aluno;
+import br.unisul.repositories.AlunoRepository;
 
 @Service
 public class AlunoService {
 	
 	
-	public List<Aluno> listaTodos(){
-		List<Aluno> lista = new ArrayList<Aluno>();
-		
-		Aluno a1 = new Aluno();
-		a1.setId(1);
-		a1.setNome("Joãozinho");
-		a1.setN1(7.0);
-		a1.setN2(6.0);
-		a1.setN3(5.0);
-		
-		Aluno a2 = new Aluno();
-		a2.setId(2);
-		a2.setNome("Mariazinha");
-		a2.setN1(7.0);
-		a2.setN2(8.0);
-		a2.setN3(9.0);
-		
-		Aluno a3 = new Aluno();
-		a3.setId(3);
-		a3.setNome("Pedrinho");
-		a3.setN1(8.0);
-		a3.setN2(8.0);
-		a3.setN3(8.0);
-		
-		lista.add(a1);
-		lista.add(a2);
-		lista.add(a3);
-		
-		return lista;
-	}
+	@Autowired
+    AlunoRepository repository;
+
+    public List<Aluno> listAll() {
+        return repository.findAll();
+    }
+
+    public void addAluno(Aluno a) {
+        repository.save(a);
+    }
+
+    public Aluno buscaPorId(Integer id) {
+        return repository.findById(id).get();
+    }
+
+    public void excluir(Integer id) {
+        Aluno a = buscaPorId(id);
+        if (a != null)
+            repository.delete(a);
+    }
+
+    public Aluno altera(Integer id, Aluno a){
+        Aluno bd = buscaPorId(id);
+        bd.setNome(a.getNome());
+        bd.setN1(a.getN1());
+        bd.setN2(a.getN2());
+        bd.setN3(a.getN3());
+        repository.save(bd);
+        return bd;
+
+    }
 
 }
