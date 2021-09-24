@@ -8,77 +8,69 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
-
-
 @Entity
 public class Aluno {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer Id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-	private String Nome;
+	private String nome;
 
-	@Column
-	private Double N1;
-	@Column
-	private Double N2;
-	@Column
-	private Double N3;
-	
-	public Aluno(Integer Id, String Nome, Double N1, Double N2, Double N3) {
-		this.Id = Id;
-		this.Nome = Nome;
-		this.N1 = N1;
-		this.N2 = N2;
-		this.N3 = N3;
-	  }
-	
-	  public Aluno() {
-	
-	  }
-	
-	
-	
-	
-	
-	
-	
+	@Column(name = "nota1")
+	private Double n1;
+
+	@Column(name = "nota2")
+	private Double n2;
+
+	@Column(name = "nota3")
+	private Double n3;
+
 	public Integer getId() {
-		return Id;
+		return id;
 	}
+
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
+
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
+
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
+
 	public Double getN1() {
-		return N1;
+		return n1;
 	}
+
 	public void setN1(Double n1) {
-		N1 = n1;
+		this.n1 = n1;
 	}
+
 	public Double getN2() {
-		return N2;
+		return n2;
 	}
+
 	public void setN2(Double n2) {
-		N2 = n2;
+		this.n2 = n2;
 	}
+
 	public Double getN3() {
-		return N3;
+		return n3;
 	}
+
 	public void setN3(Double n3) {
-		N3 = n3;
+		this.n3 = n3;
 	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(Id);
+		return Objects.hash(id);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -88,15 +80,7 @@ public class Aluno {
 		if (getClass() != obj.getClass())
 			return false;
 		Aluno other = (Aluno) obj;
-		return Objects.equals(Id, other.Id);
+		return Objects.equals(id, other.id);
 	}
-	@Override
-	public String toString() {
-		return "Aluno [Id=" + Id + ", Nome=" + Nome + ", N1=" + N1 + ", N2=" + N2 + ", N3=" + N3 + "]";
-	}
-	
-	
-
-	
 
 }

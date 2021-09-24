@@ -5,7 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import br.unisul.domain.Aluno;
 
+import java.util.List;
+
 @Repository
 public interface AlunoRepository extends JpaRepository<Aluno, Integer>{
+
+    List<Aluno> findByNome(String nome);
 
 }
