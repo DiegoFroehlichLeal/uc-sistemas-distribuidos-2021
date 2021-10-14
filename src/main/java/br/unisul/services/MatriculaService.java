@@ -3,11 +3,11 @@ package br.unisul.services;
 import br.unisul.domain.Aluno;
 import br.unisul.domain.Disciplina;
 import br.unisul.domain.Matricula;
-import br.unisul.domain.Cidade;
+
 import br.unisul.repositories.AlunoRepository;
 import br.unisul.repositories.DisciplinaRepository;
 import br.unisul.repositories.MatriculaRepository;
-import br.unisul.repositories.CidadeRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,9 +29,11 @@ public class MatriculaService {
         Aluno aluno = alunoRepository.getById(matricula.getId().getAluno().getId());
         Disciplina disciplina = disciplinaRepository.getById(matricula.getId().getDisciplina().getId());
 
+
         if(aluno != null && disciplina != null){
             matricula.getId().setAluno(aluno);
             matricula.getId().setDisciplina(disciplina);
+
             repository.save(matricula);
         }
     }

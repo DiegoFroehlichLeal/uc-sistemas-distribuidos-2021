@@ -17,7 +17,7 @@ public class AlunoResource {
 
 	@GetMapping("/lista")
 	public List<Aluno> listAll() {
-		return service.listAll();
+		return service.listaTodos();
 	}
 
 	@PostMapping("/add")

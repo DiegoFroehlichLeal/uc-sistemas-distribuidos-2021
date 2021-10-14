@@ -10,22 +10,12 @@ public class Aluno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
 	private String nome;
-
-
-
+	private Double n1;
+	private Double n2;
+	private Double n3;
 	@ManyToOne
 	private Cidade cidade;
-
-	@Column(name = "nota1")
-	private Double n1;
-
-	@Column(name = "nota2")
-	private Double n2;
-
-	@Column(name = "nota3")
-	private Double n3;
 
 	public Integer getId() {
 		return id;
@@ -66,6 +56,7 @@ public class Aluno {
 	public void setN3(Double n3) {
 		this.n3 = n3;
 	}
+
 	public Cidade getCidade() {
 		return cidade;
 	}
@@ -91,15 +82,17 @@ public class Aluno {
 		return Objects.equals(id, other.id);
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Aluno{" +
 				"id=" + id +
 				", nome='" + nome + '\'' +
+				", cidade=" + cidade +
 				", n1=" + n1 +
 				", n2=" + n2 +
 				", n3=" + n3 +
 				'}';
 	}
-
 }

@@ -1,20 +1,20 @@
 package br.unisul.resources;
 
+import br.unisul.domain.Aluno;
 import br.unisul.domain.Matricula;
 import br.unisul.services.MatriculaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/matricula")
-class MatriculaResource {
+public class MatriculaResource {
 
     @Autowired
     MatriculaService service;
 
-    @GetMapping("/index")
+    @GetMapping("/lista")
     public List<Matricula> index(){
         return service.all();
     }
@@ -24,7 +24,7 @@ class MatriculaResource {
         return service.find(id);
     }
 
-    @PostMapping("/store")
+    @PostMapping("/add")
     public void store(@RequestBody Matricula matricula){
         service.insert(matricula);
     }

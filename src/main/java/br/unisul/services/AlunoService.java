@@ -21,24 +21,22 @@ public class AlunoService {
     @Autowired
     CidadeRepository cidadeRepository;
 
-    public void insert(Aluno aluno){
-        Cidade cidade = cidadeRepository.getById(aluno.getCidade().getId());
-        if(cidade != null){
-            aluno.setCidade(cidade);
-            repository.save(aluno);
-        }
-    }
+
 
     public List<Aluno> buscaPorNome(String nome){
         return repository.findByNome(nome);
     }
 
-    public List<Aluno> listAll() {
+    public List<Aluno> listaTodos() {
         return repository.findAll();
     }
 
     public void addAluno(Aluno a) {
-        repository.save(a);
+        Cidade c = cidadeRepository.getById(a.getCidade().getId());
+        if(c != null) {
+            a.setCidade(c);
+            repository.save(a);
+        }
     }
 
     public Aluno buscaPorId(Integer id) {
@@ -57,9 +55,9 @@ public class AlunoService {
         bd.setN1(a.getN1());
         bd.setN2(a.getN2());
         bd.setN3(a.getN3());
-        Cidade cidade = cidadeRepository.getById(bd.getCidade().getId());
-        if(cidade != null){
-            bd.setCidade(cidade);
+        Cidade c = cidadeRepository.getById(a.getCidade().getId());
+        if(c != null){
+            a.setCidade(c);
             repository.save(bd);
 
             return bd;
