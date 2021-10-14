@@ -5,14 +5,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.unisul.domain.Aluno;
+import br.unisul.domain.Professor;
+import br.unisul.domain.Cidade;
 import br.unisul.repositories.AlunoRepository;
+import br.unisul.repositories.CidadeRepository;
+
 
 @Service
 public class AlunoService {
-	
-	
+
+
 	@Autowired
     AlunoRepository repository;
+
+    @Autowired
+    CidadeRepository cidadeRepository;
+
+    public void insert(Aluno aluno){
+        Cidade cidade = cidadeRepository.getById(aluno.getCidade().getId());
+        if(cidade != null){
+            aluno.setCidade(cidade);
+            repository.save(aluno);
+        }
+    }
+
+    public List<Aluno> buscaPorNome(String nome){
+        return repository.findByNome(nome);
+    }
 
     public List<Aluno> listAll() {
         return repository.findAll();
@@ -38,9 +57,20 @@ public class AlunoService {
         bd.setN1(a.getN1());
         bd.setN2(a.getN2());
         bd.setN3(a.getN3());
-        repository.save(bd);
-        return bd;
+        Cidade cidade = cidadeRepository.getById(bd.getCidade().getId());
+        if(cidade != null){
+            bd.setCidade(cidade);
+            repository.save(bd);
 
+            return bd;
+        }
+
+        return null;
+
+
+    }
+    public List<Aluno> findByNome(String nome){
+        return repository.findByNome(nome);
     }
 
 }

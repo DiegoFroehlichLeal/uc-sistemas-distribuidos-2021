@@ -44,10 +44,14 @@ public class DisciplinaService {
     public Disciplina altera(Integer id, Disciplina d) {
         Disciplina db = buscaPorId(id);
         db.setNome(d.getNome());
+
         Professor p = professorRepository.getById(d.getProfessor().getId());
-        db.setProfessor(p);
-        repository.save(db);
-        return db;
+        if(p != null) {
+            db.setProfessor(p);
+            repository.save(db);
+            return db;
+        }
+        return null;
     }
 
 }

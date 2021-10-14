@@ -2,11 +2,7 @@ package br.unisul.domain;
 
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Aluno {
@@ -16,6 +12,11 @@ public class Aluno {
 	private Integer id;
 
 	private String nome;
+
+
+
+	@ManyToOne
+	private Cidade cidade;
 
 	@Column(name = "nota1")
 	private Double n1;
@@ -65,6 +66,13 @@ public class Aluno {
 	public void setN3(Double n3) {
 		this.n3 = n3;
 	}
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
 
 	@Override
 	public int hashCode() {
@@ -81,6 +89,17 @@ public class Aluno {
 			return false;
 		Aluno other = (Aluno) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	@Override
+	public String toString() {
+		return "Aluno{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", n1=" + n1 +
+				", n2=" + n2 +
+				", n3=" + n3 +
+				'}';
 	}
 
 }

@@ -1,4 +1,4 @@
-/*package br.unisul.resources;
+package br.unisul.resources;
 
 import br.unisul.domain.Aluno;
 import br.unisul.services.AlunoService;
@@ -15,13 +15,8 @@ import java.util.List;
 @RequestMapping("/aluno")
 public class calculadora {
 
-    @Autowired
-    AlunoService service;
 
-    @GetMapping("/lista")
-    public List<Aluno> listaTodos() {
-        return service.listaTodos();
-    }
+
 
     @GetMapping("/somar")
     public Double somaNotas(@RequestParam(name = "n1") double n1, @RequestParam(name = "n2") double n2) {
@@ -43,5 +38,5 @@ public class calculadora {
         return n1 * n2;
     }
 
-}*/
+}
 

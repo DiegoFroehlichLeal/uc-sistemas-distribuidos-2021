@@ -30,6 +30,11 @@ public class AlunoResource {
 		return service.buscaPorId(id);
 	}
 
+	@GetMapping("nome")
+	public List<Aluno> buscaPorNome(@RequestParam (name = "nome") String nome) {
+		return service.buscaPorNome(nome);
+	}
+
 	@DeleteMapping("excluir/{id}")
 	public void excluir(@PathVariable(name = "id") Integer id) {
 		service.excluir(id);
@@ -39,6 +44,10 @@ public class AlunoResource {
 	public Aluno altera(@PathVariable(name = "id") Integer id, @RequestBody Aluno a) {
 		return service.altera(id, a);
 
+	}
+	@GetMapping("/procura")
+	public List<Aluno> search(@RequestParam(name = "nome") String nome){
+		return service.findByNome(nome);
 	}
 
 }
